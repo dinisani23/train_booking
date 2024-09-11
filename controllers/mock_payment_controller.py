@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import update
 import datetime
 import stripe
-stripe.api_key = "sk_test_51PxlIj1cwRvGuazLYBbSjbBv5qxlxLQq1Jt1zyXZTOWV4AJR9P0XrPfQLf1sPmU1irtktdM9eWya6dait9H32Vl200HEflVj7W"
+stripe.api_key = "sk_test_key here"
 
 mock_stripe = Blueprint('mock_booking_payment', __name__)
 
