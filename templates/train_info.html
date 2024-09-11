@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+<section class="page-section portfolio" id="portfolio">
+  <div class="container mt-5"><h1>Depart</h1></div>
+{% if depart_schedules %}
+  {% for depart in depart_schedules %}
+      <div class="container mt-5">
+        <a href="{{ url_for('coach_info.coaches', train_number=depart.id) }}" style="text-decoration:none; color:inherit;">
+          <div class="card">
+            <div class="card-body btn btn-outline-primary text-start">
+              <div>{{ depart.departure_date }}</div>
+              <div>{{ depart.train_number }}</div>
+              <div>Origin: {{ depart.origin }}</div>
+              <div>Destination: {{ depart.destination }}</div>
+              <div>Estimated time arrival: {{ depart.departure_time }} - {{ depart.arrival_time }}</div>
+              <div>RM {{ depart.price }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+  {% endfor %}
+{% else %}
+  <div class="container mt-5">
+    <p>No depart schedules found.</p>
+  </div>
+{% endif %}
+
+<div class="container mt-5"><h1>Return</h1></div>
+{% if return_schedules %}
+  {% for return in return_schedules %}
+      <div class="container mt-5">
+        <a href="{{ url_for('coach_info.coaches', train_number=return.id) }}" style="text-decoration:none; color:inherit;">
+          <div class="card">
+            <div class="card-body btn btn-outline-primary text-start">
+              <div>{{ return.departure_date }}</div>
+              <div>{{ return.train_number }}</div>
+              <div>Origin: {{ return.origin }}</div>
+              <div>Destination: {{ return.destination }}</div>
+              <div>Estimated time arrival: {{ return.departure_time }} - {{ return.arrival_time }}</div>
+              <div>RM {{ return.price }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+  {% endfor %}
+{% else %}
+  <div class="container mt-5">
+    <p>No return schedules found.</p>
+  </div>
+{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image
+                <img class="masthead-avatar mb-5" src="static/assets/img/avataaars.svg" alt="..." />-->
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">Start Booking Your Seat Now!</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                 <p>Semenanjung Train Ticket</p>
+            </div>
+        </header>
+        <!-- form Section-->
+        <section class="h-100 h-custom" style="background-color: #8fc4b7;">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                  <div class="card rounded-3">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Train Tickets</h3>
+          
+                      <form class="px-md-2" method="POST" action="{{ url_for('train_info.train_schedule') }}">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+            
+                              <div data-mdb-input-init class="form-outline datepicker">
+                                <select class="form-select" name="origins" id="origins" aria-placeholder="Select">
+                                    <option value="Johor">Johor</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Penang">Pulau Pinang</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                  </select>
+                                  <label for="exampleDatepicker1" class="form-label">Origin</label>
+                              </div>
+            
+                            </div>
+                            <div class="col-md-6 mb-4">
+            
+                              <div data-mdb-input-init class="form-outline datepicker">
+                                <select class="form-select" name="destinations" id="destinations" aria-placeholder="Select">
+                                    <option value="Johor">Johor</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Penang">Pulau Pinang</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                  </select>
+                                <label for="exampleDatepicker1" class="form-label">Destination</label>
+                              </div>
+            
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+            
+                              <div data-mdb-input-init class="form-outline datepicker">
+                                <input  name="departure" type="date" class="form-control" id="exampleDatepicker1" />
+                                <label for="exampleDatepicker1" class="form-label">Departure</label>
+                              </div>
+            
+                            </div>
+                            <div class="col-md-6 mb-4">
+            
+                              <div data-mdb-input-init class="form-outline datepicker">
+                                <input  name="return_date" type="date" class="form-control" id="exampleDatepicker1" />
+                                <label for="exampleDatepicker1" class="form-label">Return (Optional)</label>
+                              </div>
+            
+                            </div>
+                        </div>
+
+                        <!--<div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                            <div class="col-md-6">
+            
+                              <div data-mdb-input-init class="form-outline">
+                                <input name="pax" type="text" id="form3Example1w" class="form-control" />
+                                <label class="form-label" for="form3Example1w">Pax</label>
+                              </div>
+            
+                            </div>
+                        </div>-->
+          
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg mb-1">Submit</button>
+          
+                      </form>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+{% endblock %}

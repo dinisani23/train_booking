@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Login - My Flask App{% endblock %}
+
+{% block content %}
+<section class="page-section portfolio" id="portfolio">
+    <div class="container vh-100 mt-5">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tickets History</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {% if results %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#Invoice</th>
+                    <th scope="col">Train</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Receipt</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for item in results %}
+                        <tr>
+                            <td>{{ item.booking_id }}</td>
+                            <td>{{ item.train_number }}</td>
+                            <td>{{ item.origin }}</td>
+                            <td>{{ item.destination }}</td>
+                            <td>{{ item.departure_date }}</td>
+                            <td><a href="{{ url_for('mock_booking_payment.mock_pay', booking_id=item.id) }}">View</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No record available.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

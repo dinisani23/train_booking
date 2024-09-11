@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container py-5 h-100 mt-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <div class="card-body p-4 p-md-5">
+                        {% if seat_summary %}
+                            {% for summary in seat_summary %}
+                                <div class="container mt-2">
+                                    <h3 class="mb-4">Ticket Summary</h3>
+                                    <p>Date: {{ summary.departure_date }}</p>
+                                    <p>Origin: {{ summary.origin }}</p>
+                                    <p>Destination: {{ summary.destination }}</p>
+                                    <p>Departure Time: {{ summary.departure_time }}</p>
+                                    <p>Estimated Time Arrival: {{ summary.arrival_time }}</p>
+                                    <p>Train Number: {{ summary.train_number }}</p>
+                                    <p>Coach: {{ summary.coach_number }}</p>
+                                    <p>Seat: {{ summary.seat_number }}</p>
+                                    <p>Price: RM {{ summary.price }}</p>
+                                </div>
+                            
+
+                        <div class="d-flex gap-2 justify-content-center align-items-center mt-5">
+                            <a href="{{ url_for('seat_info.seats', booking_id=booking_id, coach_number=summary.coach_number) }}" class="btn btn-danger btn-lg" role="button">Reselect Seat</a>
+                            <a href="{{ url_for('book_seat_confirm.book_seats_confirm', booking_id=booking_id, booked_train=train_booked) }}" class="btn btn-success btn-lg" role="button">Confirm Booking</a>
+                        </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Error</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

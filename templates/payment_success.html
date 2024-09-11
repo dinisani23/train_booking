@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container py-5 h-100 mt-5">
+
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Payment Success!</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="card">
+            <div class="card-body mx-4">
+              <div class="container">
+                <p class="my-5" style="font-size: 30px;">Thank you for your purchase</p>
+                <div class="row">
+                    {% if booking %}
+                        <!-- If booking is a single object, just display its details -->
+                        <ul class="list-unstyled">
+                            <li class="text-black">{{ booking.customer_email }}</li>
+                            <li class="text-muted mt-1"><span class="text-black">Invoice</span> #{{ booking.id }}</li>
+                            <li class="text-black mt-1">{{ booking.booking_date }}</li>
+                        </ul>
+                    {% else %}
+                        <p>Error: Booking details not found.</p>
+                    {% endif %}
+                    <hr>
+                    {% if tix %}
+                        <!-- If tix is a single object, display its details -->
+                        <div class="row">
+                            <div class="col-xl-10">
+                                <p>Train Number: {{ tix.train_number }}</p>
+                                <p>Departure: {{ tix.departure_date }} at {{ tix.departure_time }}</p>
+                                <p>Arrival: {{ tix.arrival_time }}</p>
+                                <p>Origin: {{ tix.origin }}</p>
+                                <p>Destination: {{ tix.destination }}</p>
+                            </div>
+                            <div class="col-xl-2">
+                                <p class="float-end">RM {{ tix.price }}</p>
+                            </div>
+                        </div>
+                        <hr style="border: 2px solid black;">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <p class="float-end fw-bold">Total: RM {{ tix.price }}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>Error: Ticket details not found.</p>
+                    {% endif %}
+                    <hr style="border: 2px solid black;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+</section>
+{% endblock %}

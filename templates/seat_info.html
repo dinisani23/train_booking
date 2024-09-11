@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+
+<section class="page-section portfolio" id="portfolio">
+    <div class="container mt-5">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Grid Items-->
+        <div class="row row-cols-4 justify-content-center">
+            <!-- Portfolio Item 1-->
+            {% if seat_available %}
+                {% for seat in seat_available %}
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto">
+                            {% if (seat.locked_until is none or seat.locked_until < current_timestamp) or seat_status == 1 %}
+                                <a href="{{ url_for('book_seat_info.book_seats', booking_id=booking_id, seat_number=seat.seat_number) }}" style="text-decoration:none; color:inherit;">
+                                    <div class="card btn btn-outline-primary text-start d-flex align-items-center justify-content-center h-100 w-100" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Coach {{ seat.coach_number }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Seat {{ seat.seat_number }}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <div class="card btn btn-outline-secondary text-start d-flex align-items-center justify-content-center h-100 w-100" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Coach {{ seat.coach_number }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Seat {{ seat.seat_number }} is occupied.</h6>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No seat available.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
