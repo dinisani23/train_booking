@@ -1,6 +1,6 @@
 # Train Ticket Booking System
 
-Overview
+## Overview
 This web application is a Train Ticket Booking System built using Flask. It allows users to browse train schedules, book seats, and manage their bookings. The system integrates with a mock payment gateway for payment processing and includes user authentication features.
 
 ## Features
