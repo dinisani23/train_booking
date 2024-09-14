@@ -21,7 +21,7 @@ This web application is a Train Ticket Booking System built using Flask. It allo
 ### Booking Management:
 - View and manage your bookings
 
-Payment Processing:
+### Payment Processing:
 - Complete payments via Stripe (mock setup for testing)
 
 ## Requirements
